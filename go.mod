@@ -3,12 +3,17 @@ module clickup-tui
 go 1.22.5
 
 require (
-	github.com/charmbracelet/bubbletea v0.26.6 // indirect
+	github.com/charmbracelet/bubbletea v0.26.6
+	github.com/raksul/go-clickup v0.0.0-20240703160539-aec65c47ab59
+)
+
+require (
 	github.com/charmbracelet/x/ansi v0.1.2 // indirect
 	github.com/charmbracelet/x/input v0.1.0 // indirect
 	github.com/charmbracelet/x/term v0.1.1 // indirect
 	github.com/charmbracelet/x/windows v0.1.0 // indirect
 	github.com/erikgeiser/coninput v0.0.0-20211004153227-1c3628e74d0f // indirect
+	github.com/google/go-querystring v1.1.0 // indirect
 	github.com/mattn/go-localereader v0.0.1 // indirect
 	github.com/mattn/go-runewidth v0.0.15 // indirect
 	github.com/muesli/ansi v0.0.0-20230316100256-276c6243b2f6 // indirect

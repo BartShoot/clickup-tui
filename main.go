@@ -1,10 +1,13 @@
 package main
 
 import (
+	"context"
+	// "encoding/json"
 	"fmt"
-	"os"
+	// "os"
 
 	tea "github.com/charmbracelet/bubbletea"
+	"github.com/raksul/go-clickup/clickup"
 )
 
 type model struct {
@@ -103,9 +106,22 @@ func (m model) View() string {
 }
 
 func main() {
-	p := tea.NewProgram(initialModel())
-	if _, err := p.Run(); err != nil {
-		fmt.Printf("Alas, there's been an error: %v", err)
-		os.Exit(1)
+	client := clickup.NewClient(nil, "insert_key_here")
+
+	teams, _, _ := client.Teams.GetTeams(context.Background())
+	spaces, _, _ := client.Spaces.GetSpaces(context.Background(), teams[0].ID, false)
+	folders, _, _ := client.Folders.GetFolders(context.Background(), spaces[0].ID, false)
+	for i, folder := range folders {
+		fmt.Printf("%d. %s: %s\n", i, folder.Name, folder.ID)
 	}
+	// s, _ := json.MarshalIndent(folders, "", "\t")
+	// fmt.Print(string(s))
+
+	// fmt.Printf("%v\n", teams)
+
+	// p := tea.NewProgram(initialModel())
+	// if _, err := p.Run(); err != nil {
+	// 	fmt.Printf("Alas, there's been an error: %v", err)
+	// 	os.Exit(1)
+	// }
 }
